@@ -30,9 +30,30 @@ def draw_window(red, yellow):
     WIN.blit(RED_SPACESHIP, (red.x,red.y))
     pygame.display.update()
 
+def yellow_handle_movement(keys_pressed, yellow): # The yellow spaceship (wasd)
+        if keys_pressed[pygame.K_a]:
+            yellow.x-=VEL
+        if keys_pressed[pygame.K_d]:
+            yellow.x+=VEL     
+        if keys_pressed[pygame.K_w]:
+            yellow.y-=VEL
+        if keys_pressed[pygame.K_s]:
+            yellow.y+=VEL
+
+def red_handle_movement(keys_pressed, red): # The red spaceship  (piltaster)
+    if keys_pressed[pygame.K_LEFT]:
+        red.x-=VEL
+    if keys_pressed[pygame.K_RIGHT]:
+        red.x+=VEL     
+    if keys_pressed[pygame.K_UP]:
+        red.y-=VEL
+    if keys_pressed[pygame.K_DOWN]:
+        red.y+=VEL
 
 
-# Hovedprogram starter her
+
+
+# Hovedprogram starter her :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 def main():
     red = pygame.Rect(700, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
     yellow = pygame.Rect(100, 300, SPACESHIP_WIDTH, SPACESHIP_HEIGHT)
@@ -45,25 +66,11 @@ def main():
                  run = False
         
         keys_pressed = pygame.key.get_pressed()
-        # The yellow spaceship (wasd)
-        if keys_pressed[pygame.K_a]:
-            yellow.x-=VEL
-        if keys_pressed[pygame.K_d]:
-            yellow.x+=VEL     
-        if keys_pressed[pygame.K_w]:
-            yellow.y-=VEL
-        if keys_pressed[pygame.K_s]:
-            yellow.y+=VEL
-
-        # The red spaceship  (piltaster)
-        if keys_pressed[pygame.K_LEFT]:
-            red.x-=VEL
-        if keys_pressed[pygame.K_RIGHT]:
-            red.x+=VEL     
-        if keys_pressed[pygame.K_UP]:
-            red.y-=VEL
-        if keys_pressed[pygame.K_DOWN]:
-            red.y+=VEL
+        
+        yellow_handle_movement(keys_pressed, yellow)
+        
+        red_handle_movement(keys_pressed, red)
+        
 
         draw_window(red, yellow)
 
