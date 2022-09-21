@@ -9,6 +9,8 @@ pygame.display.set_caption("Eriks første Pythonspill")
 #Globale variabler (konstanter egentlig)
 WHITE = (255,255,255)
 FPS = 60
+VEL = 5
+
 SPACESHIP_HEIGHT, SPACESHIP_WIDTH = 55,60
 
 
@@ -42,6 +44,27 @@ def main():
              if event.type == pygame.QUIT:
                  run = False
         
+        keys_pressed = pygame.key.get_pressed()
+        # The yellow spaceship (wasd)
+        if keys_pressed[pygame.K_a]:
+            yellow.x-=VEL
+        if keys_pressed[pygame.K_d]:
+            yellow.x+=VEL     
+        if keys_pressed[pygame.K_w]:
+            yellow.y-=VEL
+        if keys_pressed[pygame.K_s]:
+            yellow.y+=VEL
+
+        # The red spaceship  (piltaster)
+        if keys_pressed[pygame.K_LEFT]:
+            red.x-=VEL
+        if keys_pressed[pygame.K_RIGHT]:
+            red.x+=VEL     
+        if keys_pressed[pygame.K_UP]:
+            red.y-=VEL
+        if keys_pressed[pygame.K_DOWN]:
+            red.y+=VEL
+
         draw_window(red, yellow)
 
     pygame.quit()
