@@ -37,23 +37,23 @@ def draw_window(red, yellow):
     pygame.display.update()
 
 def yellow_handle_movement(keys_pressed, yellow): # The yellow spaceship (wasd)
-        if keys_pressed[pygame.K_a]:
+        if keys_pressed[pygame.K_a] and yellow.x - VEL > 0 :
             yellow.x-=VEL
-        if keys_pressed[pygame.K_d]:
+        if keys_pressed[pygame.K_d] and yellow.x + VEL + SPACESHIP_WIDTH < BORDER.x:
             yellow.x+=VEL     
-        if keys_pressed[pygame.K_w]:
+        if keys_pressed[pygame.K_w] and yellow.y - VEL > 0:
             yellow.y-=VEL
-        if keys_pressed[pygame.K_s]:
+        if keys_pressed[pygame.K_s] and yellow.y + VEL + SPACESHIP_HEIGHT < HEIGHT -10:
             yellow.y+=VEL
 
 def red_handle_movement(keys_pressed, red): # The red spaceship  (piltaster)
-    if keys_pressed[pygame.K_LEFT]:
+    if keys_pressed[pygame.K_LEFT] and red.x - VEL > BORDER.x +10 :
         red.x-=VEL
-    if keys_pressed[pygame.K_RIGHT]:
+    if keys_pressed[pygame.K_RIGHT] and red.x + VEL + SPACESHIP_WIDTH < WIDTH:
         red.x+=VEL     
-    if keys_pressed[pygame.K_UP]:
+    if keys_pressed[pygame.K_UP] and red.y - VEL > 0:
         red.y-=VEL
-    if keys_pressed[pygame.K_DOWN]:
+    if keys_pressed[pygame.K_DOWN] and red.y + VEL + SPACESHIP_HEIGHT < HEIGHT -10:
         red.y+=VEL
 
 
