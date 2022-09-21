@@ -6,13 +6,17 @@ WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Eriks første Pythonspill")
 
+# Skillestrek
+BORDER = pygame.Rect((WIDTH/2)-5, 0, 10, HEIGHT)
+
 #Globale variabler (konstanter egentlig)
-WHITE = (255,255,255)
 FPS = 60
 VEL = 5
-
 SPACESHIP_HEIGHT, SPACESHIP_WIDTH = 55,60
 
+# farger
+WHITE = (255,255,255)
+BLACK = (0,0,0)
 
 # Importerer grafikkfilene, skalerer de og roterer rett vei
 RED_SPACESHIP_IMAGE=pygame.image.load(os.path.join("Assets","spaceship_red.png"))
@@ -23,9 +27,11 @@ YELLOW_SPACESHIP=pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP
 
 
 
+
 # Tegner opp spillvinduet
 def draw_window(red, yellow):
     WIN.fill(WHITE)
+    pygame.draw.rect(WIN, BLACK, BORDER)
     WIN.blit(YELLOW_SPACESHIP, (yellow.x,yellow.y))
     WIN.blit(RED_SPACESHIP, (red.x,red.y))
     pygame.display.update()
