@@ -32,9 +32,6 @@ BLACK = (0,0,0)
 RED = (255,0,0)
 YELLOW = (255,255,0)
 
-
-
-
 # Importerer grafikkfilene, skalerer de og roterer rett vei
 RED_SPACESHIP_IMAGE=pygame.image.load(os.path.join("Assets","spaceship_red.png"))
 RED_SPACESHIP=pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMAGE, (SPACESHIP_WIDTH, SPACESHIP_HEIGHT)), 270)
@@ -135,8 +132,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-                pygame.QUIT
-
+                pygame.quit()
+                
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LCTRL and len(yellow_bullets) < MAX_BULLETS:
                     bullet=pygame.Rect(yellow.x+yellow.width, yellow.y + yellow.height//2 + 2, 10, 5)
@@ -158,6 +155,7 @@ def main():
         if yellow_health <= 0:
             winner_text = "Red wins!"
         if winner_text !="":
+            pygame.display.update
             draw_winner_text(winner_text)
             break
 
